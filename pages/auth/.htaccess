@@ -1,0 +1,10 @@
+# Deny direct access to PHP files
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Allow access to specific files (e.g., login.html, register.html)
+<FilesMatch "^(login\.html|register\.html)$">
+    Allow from all
+</FilesMatch>

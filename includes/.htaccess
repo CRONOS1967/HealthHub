@@ -1,0 +1,7 @@
+# Deny access to all files in this directory
+Deny from all
+
+# Allow access to specific files (if needed)
+<FilesMatch "^(Database\.php|UserAuth\.php|SessionManager\.php|functions\.php)$">
+    Allow from all
+</FilesMatch>

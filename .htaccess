@@ -1,0 +1,25 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect all requests to index.php (for a single entry point)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Deny access to sensitive files
+<FilesMatch "\.(env|log|htaccess|htpasswd|ini|phps|fla|psd|log|sh|sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Prevent access to hidden files (e.g., .git, .env)
+<Files .*>
+    Order Deny,Allow
+    Deny From All
+</Files>
